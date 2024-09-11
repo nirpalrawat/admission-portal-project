@@ -1,5 +1,102 @@
-<%- include('./header.ejs') %> 
+<%- include('./header.ejs')%>
 
-<h1> Home page </h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
 
-<%- include('./footer.ejs') %>
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="/css/style" />
+
+    <!-- Bootstrap Link -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+
+    <!-- icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- carousel -->
+    <section id="carousel">
+      <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+        <!-- <div class="carousel-indicators">
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"
+                    aria-label="Slide 1" aria-current="true"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"
+                    class=""></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"
+                    class=""></button>
+            </div> -->
+
+        <div class="carousel-inner">
+          <!-- item-1 -->
+          <div class="carousel-item active" data-bs-interval="4000">
+            <img
+              class="carouselHeight"
+              src="./Images/CampusImage-1.avif"
+              alt="Campus Image-1"
+              width="100%"
+            />
+          </div>
+
+          <!-- item-2 -->
+          <div class="carousel-item" data-bs-interval="2000">
+            <img
+              class="carouselHeight"
+              src="./Images/CampusImage-2.avif"
+              alt="Campus Image-2"
+              width="100%"
+            />
+          </div>
+
+          <!-- item-3 -->
+          <div class="carousel-item" data-bs-interval="2000">
+            <img
+              class="carouselHeight"
+              src="./Images/CampusImage-3.jpeg"
+              alt="Campus Image-3"
+              width="100%"
+            />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#myCarousel"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#myCarousel"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+    <!-- End Carousel -->
+
+    <!-- Java Script Link -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
+
+<%- include('./footer.ejs')%>

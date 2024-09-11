@@ -12,6 +12,8 @@ app.set('view engine', 'ejs')
 
 
 connectDb()
+// css image link
+app.use(express.static('public'))
 
 
 

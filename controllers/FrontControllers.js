@@ -1,5 +1,4 @@
 const UserModel = require('../models/user')
-const teacherModel = require('../models/teacher')
 
 class FrontController{
     static home =async(req,res)=>{
@@ -41,6 +40,15 @@ class FrontController{
         }
     }
 
+    static contact =async(req,res)=>{
+        try{
+            res.render("contact")
+
+        }catch(error)
+        {
+            console.log(error)
+        }
+    }
 }
 
 module.exports = FrontController
