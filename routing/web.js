@@ -12,5 +12,7 @@ route.get('/contact',FrontController.contact)
 
 //admin
 route.get('/admin/dashboard',AdminController.dashboard)
+route.get('/admin/studentDisplay',AdminController.studendDisplay)
+
 
   module.exports= route
