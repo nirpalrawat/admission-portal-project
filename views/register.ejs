@@ -26,7 +26,7 @@
                 <img class="mb-4 rounded-circle" src="./Images/SignUpImage.jpeg" alt="Sign Up Image" width="20%" height="20%">
             </center>
               <h2 class="card-title text-center mb-4">Register</h2>
-              <form action="/submit-form" method="post">
+              <form action="/insertstudent" method="post">
                 <div class="mb-3">
                   <label for="name" class="form-label">Full Name</label>
                   <input
@@ -63,18 +63,12 @@
                     type="password"
                     class="form-control"
                     id="password"
-                    name="password"
+                    name="confirmpassword"
                     required
                   />
                 </div>
-                 <!-- Choose File -->
-                 <div class="row mb-5">
-                  <div class="col-lg-9 my-auto text-uppercase fw-light text-end">No file chosen</div>
-                  <div class="col-lg-3 my-auto text-uppercase fw-light text-end">
-                      <button class="btn btn-secondary fw-light">Choose File</button>
-                  </div>
-              </div>
-                <button type="submit"  class="btn btn-primary ">
+                
+                <button type="submit"  class="btn btn-primary  btn-lg ">
                   Register
                 </button>
               </form>
