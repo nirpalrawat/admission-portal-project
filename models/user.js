@@ -16,10 +16,9 @@ const UserSchema =mongoose.Schema({
         type:String,
         default:"student"
     },
-
-
-
-})
-const UserModel= mongoose.model('user',UserSchema)
+    },
+    {timestamps:true}
+)
+const UserModel= mongoose.model('user',UserSchema) 
 
 module.exports = UserModel
