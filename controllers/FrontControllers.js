@@ -1,7 +1,7 @@
 const UserModel = require("../models/user");
 
 class FrontController {
-  static home = async (req, res) => {
+  static home = async (req, res) => { 
     try {
       res.render("home");
     } catch (error) {
