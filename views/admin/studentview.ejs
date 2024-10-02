@@ -1,4 +1,5 @@
-<%- include('./header.ejs')%> <%- include('./sidebar.ejs')%>
+<%- include('./header.ejs')%> 
+<%- include('./sidebar.ejs')%>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -12,8 +13,8 @@
         <!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Dashbord</li>
+            <li class="breadcrumb-item"><a href="#">home</a></li>
+            <li class="breadcrumb-item active">view</li> 
           </ol>
         </div>
         <!-- /.col -->
@@ -44,43 +45,35 @@
           <table id="example1" class="table table-bordered table-striped">
             <thead>
               <tr>
-                <th>id</th>
+                <th>Id</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>password</th>
-                <th>Action</th>
+               
               </tr>
             </thead>
             <tbody>
-              <% d.forEach ((item)=>{ %>
+             
                 <tr>
-                 <td> <%=item._id %> </td>
-                 <td> <%=item.name%> </td>
-                 <td> <%=item.email%> </td>
-                 <td> <%=item.password %> </td>
+                 <td> <%= d._id %> </td>
+                 <td> <%= d.name%> </td>
+                 <td> <%= d.email%> </td>
+                 <td> <%= d.password %> </td>
 
-                 <td>
-                  <a href="/admin/studentView/<%= item._id %>" class="btn btn-info"> View</a>
-                  <a href="" class="btn btn-success"> Edit</a>
-
-                  <a href="/admin/studentDelete/<%=item._id %>" class="btn btn-danger"> Delete</a>
-
-
-                
-                </td>
+              
                 </tr>
 
 
 
-              <% }) %>
+              <!-- <% }) %> -->
             </tbody>
             <tfoot>
               <tr>
-                <th>id</th>
+                <th>Id</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>password</th>
-                <th>Action</th>
+                
               </tr>
             </tfoot>
           </table>
