@@ -23,7 +23,7 @@ class AdminController {
       const id = req.params.id;
       const data = await UserModel.findById(id);
       //Console.log(data);
-      res.render('admin/studentView',{d:data});
+      res.render('./admin/studentView',{d:data});
     } catch (error) {
       console.log(error);
     }
@@ -33,7 +33,7 @@ class AdminController {
       //console.log(req.params.id)
       const id = req.params.id;
       const data = await UserModel.findByIdAndDelete(id);
-      res.redirect('/admin/studentDisplay');
+      res.redirect('./admin/studentDisplay');
     } catch (error) {
       console.log(error);
     }
