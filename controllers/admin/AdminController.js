@@ -53,7 +53,7 @@ class AdminController {
   static studentUpdate = async (req, res) => {
     try {
       //console.log(req.body);
-      let id = req.params.id
+      const id = req.params.id;
       const { name, email, password } = req.body;
       await UserModel.findByIdAndUpdate(id, {
         name,
