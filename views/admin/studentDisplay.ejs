@@ -34,9 +34,9 @@
             type="button"
             class="btn btn-info"
             data-toggle="modal"
-            data-target="#modal-default"
+            data-target="#addStudent"
           >
-            Add student
+            Add Student
           </button>
         </div>
         <!-- /.card-header -->
@@ -105,11 +105,11 @@
 </div>
 <!-- /.content-wrapper -->
 
-<div class="modal fade" id="modal-default">
+<div class="modal fade" id="addStudent">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Default Modal</h4>
+        <h4 class="modal-title">Add Student</h4>
         <button
           type="button"
           class="close"
@@ -120,16 +120,32 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>One fine body&hellip;</p>
+        <form action="/admin/insertStudent" method="post"> 
+          <div class="form-group">
+          <label for=""> name </label>
+          <input type="text" name="name" id="" class="form-control">
+        </div>
+        
+         
+          <div class="form-group">
+          <label for=""> Email </label>
+          <input type="text" name="email" id="" class="form-control">
+        </div>
+        
+         
+          <div class="form-group">
+          <label for=""> password </label>
+          <input type="text" name="password" id="" class="form-control">
+
+        </div>
+        <button type="submit" class="btn btn-info"> submit</button>
+        </form>
       </div>
-      <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn-default" data-dismiss="modal">
-          Close
-        </button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+      
     </div>
     <!-- /.modal-content -->
+
+    
   </div>
   <!-- /.modal-dialog -->
 </div>
