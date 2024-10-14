@@ -26,6 +26,15 @@
                 <img class="mb-4 rounded-circle" src="./Images/SignUpImage.jpeg" alt="Sign Up Image" width="20%" height="20%">
             </center>
               <h2 class="card-title text-center mb-4">Register</h2>
+              
+              <% if(message.length > 0){ %>
+                <div class="alert alert-danger">
+                  <!-- To Print -->
+                  <%= message %>
+                </div>
+                <% } %>
+
+
               <form action="/insertstudent" method="post">
                 <div class="mb-3">
                   <label for="name" class="form-label">Full Name</label>
@@ -34,7 +43,7 @@
                     class="form-control"
                     id="name"
                     name="name"
-                    required
+                    
                   />
                 </div>
                 <div class="mb-3">
@@ -44,7 +53,7 @@
                     class="form-control"
                     id="email"
                     name="email"
-                    required
+                    
                   />
                 </div>
                 <div class="mb-3">
@@ -54,7 +63,7 @@
                     class="form-control"
                     id="password"
                     name="password"
-                    required
+                    
                   />
                 </div>
                 <div class="mb-3"></div>
@@ -64,7 +73,7 @@
                     class="form-control"
                     id="password"
                     name="confirmpassword"
-                    required
+                    
                   />
                 </div>
                 

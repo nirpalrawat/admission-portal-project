@@ -26,7 +26,7 @@ class FrontController {
   };
   static register = async (req, res) => {
     try {
-      res.render("register");
+      res.render("register", {message: req.flash("error")});
     } catch (error) {
       console.log(error);
     }
@@ -42,13 +42,37 @@ class FrontController {
   static insertstudent = async (req, res) => {
     try {
       //console.log(req.body)
+      // const { name, email, password, confirmpassword } = req.body;
+      // const data = await UserModel.create({
+      //   name,
+      //   email,
+      //   password,
+      //});
+      //res.redirect("/"); //route path
+
       const { name, email, password, confirmpassword } = req.body;
+      if ( !name || !email || !password || !confirmpassword){
+        req.flash("error" , "All Fields Are Required")
+      return res.redirect("/register")
+      }
+
+      const isEmail = await UserModel.findOne({email})
+      //console.log(isEmail)
+      if(isEmail){
+        req.flash("error" , "Email Alredy Exists")
+      return res.redirect("/register")
+      
+      }
+      if (password != confirmpassword){
+        req.flash("error" , "password does not match")
+        return res.redirect("/register")
+      }
       const data = await UserModel.create({
         name,
         email,
         password,
-      });
-      res.redirect("/"); //route path
+      })
+      res.redirect("/")
     } catch (error) {
       console.log(error);
     }
