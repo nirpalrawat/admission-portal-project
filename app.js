@@ -4,7 +4,13 @@ const port = 3000
 const web = require('./routing/web')
 const connectDb = require('./db/connectDb')
 
-
+//image upload
+const fileUpload = require('express-fileupload')
+//image upload
+app.use(fileUpload({
+  useTemapFiles: true,
+  tempFileDir:'/tmp/',
+}));
 //ejs a.ejs
 app.set('view engine', 'ejs')
 

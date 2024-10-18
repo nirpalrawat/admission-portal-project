@@ -1,4 +1,7 @@
 const UserModel = require("../models/user");
+//const TeacherModel
+const bcrypt = require("bcrypt")
+//npm i bcrypt
 
 class FrontController {
   static home = async (req, res) => { 
@@ -19,7 +22,7 @@ class FrontController {
 
   static login = async (req, res) => {
     try {
-      res.render("login");
+      res.render("login" ,{message: req.flash("success")}) ;
     } catch (error) {
       console.log(error);
     }
@@ -67,12 +70,17 @@ class FrontController {
         req.flash("error" , "password does not match")
         return res.redirect("/register")
       }
+      //console.log(req.files)
+
+
+      const hashpassword = await bcrypt.hash(password,10)
       const data = await UserModel.create({
         name,
         email,
-        password,
+        password: hashpassword
       })
-      res.redirect("/")
+      req.flash("success", "register success ! plz Login")
+      res.redirect('/'); //route web 
     } catch (error) {
       console.log(error);
     }
