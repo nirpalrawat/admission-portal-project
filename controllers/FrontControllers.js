@@ -1,10 +1,17 @@
 const UserModel = require("../models/user");
-//const TeacherModel
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcrypt");
+
+const cloudinary = require("cloudinary");
+cloudinary.config({
+  cloud_name: "diezdjotw",
+  api_key: "241161176572584",
+  api_secret: "1lablZJiel1I80vG8BR5dvNmLCE",
+});
+
 //npm i bcrypt
 
 class FrontController {
-  static home = async (req, res) => { 
+  static home = async (req, res) => {
     try {
       res.render("home");
     } catch (error) {
@@ -22,14 +29,14 @@ class FrontController {
 
   static login = async (req, res) => {
     try {
-      res.render("login" ,{message: req.flash("success")}) ;
+      res.render("login", { message: req.flash("success") });
     } catch (error) {
       console.log(error);
     }
   };
   static register = async (req, res) => {
     try {
-      res.render("register", {message: req.flash("error")});
+      res.render("register", { message: req.flash("error") });
     } catch (error) {
       console.log(error);
     }
@@ -44,47 +51,48 @@ class FrontController {
   };
   static insertstudent = async (req, res) => {
     try {
-      //console.log(req.body)
-      // const { name, email, password, confirmpassword } = req.body;
-      // const data = await UserModel.create({
-      //   name,
-      //   email,
-      //   password,
-      //});
-      //res.redirect("/"); //route path
-
       const { name, email, password, confirmpassword } = req.body;
-      if ( !name || !email || !password || !confirmpassword){
-        req.flash("error" , "All Fields Are Required")
-      return res.redirect("/register")
+      if (!name || !email || !password || !confirmpassword) {
+        res.flash("error", "All Filds are Require.");
+        return res.redirect("/register");
       }
 
-      const isEmail = await UserModel.findOne({email})
+      const isEmail = await UserModel.findOne({ email });
       //console.log(isEmail)
-      if(isEmail){
-        req.flash("error" , "Email Alredy Exists")
-      return res.redirect("/register")
+      if (isEmail) {
+        req.flash("error", "Email Already Exists");
+        return res.redirect("/register");
+      }
+      if (password != confirmpassword) {
+        req.flash("error", "password does not match");
+        return res.redirect("/register");
+      }
+
       
-      }
-      if (password != confirmpassword){
-        req.flash("error" , "password does not match")
-        return res.redirect("/register")
-      }
-      //console.log(req.files)
+      //console.log(req.files);
+       // image Upload
+      const file = req.files.image;
+    
+      const imageUpload = await cloudinary.uploader.upload(file.tempFilePath, {
+        folder: "userprofile",
+      });
+      console.log(imageUpload);
 
-
-      const hashpassword = await bcrypt.hash(password,10)
+      const hashpassword = await bcrypt.hash(password, 10);
       const data = await UserModel.create({
         name,
         email,
-        password: hashpassword
-      })
-      req.flash("success", "register success ! plz Login")
-      res.redirect('/'); //route web 
+        password: hashpassword,
+        image: {
+          public_id: imageUpload.public_id,
+          url: imageUpload.secure_url,
+        },
+      });
+      req.flash("success", "register success ! plz Login");
+      res.redirect("/"); //route web
     } catch (error) {
       console.log(error);
     }
   };
 }
-
 module.exports = FrontController;

@@ -1,25 +1,23 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 3000 
 const web = require('./routing/web')
 const connectDb = require('./db/connectDb')
 
 //image upload
 const fileUpload = require('express-fileupload')
-//image upload
-app.use(fileUpload({
-  useTemapFiles: true,
-  tempFileDir:'/tmp/',
-}));
+
 //ejs a.ejs
 app.set('view engine', 'ejs')
-
-
-
 
 connectDb()
 // css image link
 app.use(express.static('public'))
+//image upload
+app.use(fileUpload({
+  useTempFiles: true,
+  tempFileDir:'/tmp/',
+}));
 
 //parse application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: false }))
@@ -28,7 +26,8 @@ app.use(express.urlencoded({ extended: false }))
 const session = require('express-session')
 const flash = require('connect-flash');
 //messages
-app.use(session({
+app.use
+(session({
     secret: 'secret',
     cookie: { maxAge: 60000 },
     resave: false,
