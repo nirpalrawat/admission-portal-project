@@ -29,7 +29,10 @@ class FrontController {
 
   static login = async (req, res) => {
     try {
-      res.render("login", { message: req.flash("success") });
+      res.render("login", {
+        message: req.flash("success"),
+        msg: req.flash("error"),
+      });
     } catch (error) {
       console.log(error);
     }
@@ -49,6 +52,9 @@ class FrontController {
       console.log(error);
     }
   };
+
+  ///// insert data
+
   static insertstudent = async (req, res) => {
     try {
       const { name, email, password, confirmpassword } = req.body;
@@ -68,11 +74,10 @@ class FrontController {
         return res.redirect("/register");
       }
 
-      
       //console.log(req.files);
-       // image Upload
+      // image Upload
       const file = req.files.image;
-    
+
       const imageUpload = await cloudinary.uploader.upload(file.tempFilePath, {
         folder: "userprofile",
       });
@@ -90,6 +95,31 @@ class FrontController {
       });
       req.flash("success", "register success ! plz Login");
       res.redirect("/"); //route web
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  static verifyLogin = async (req, res) => {
+    try {
+      //console.log(req.body);
+      const { email, password } = req.body;
+      const user = await UserModel.findOne({ email: email });
+      if (user != null) { 
+        const isMatched = await bcrypt.compare(password,user.password)
+        console.log(isMatched)
+      } else {
+        req.flash("error", "You are not a registered user ");
+        return res.redirect("/");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  static logout = async (req, res) => {
+    try {
+      res.redirect("/");
     } catch (error) {
       console.log(error);
     }

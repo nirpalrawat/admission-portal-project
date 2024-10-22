@@ -29,8 +29,9 @@ route.post('/admin/studentUpdate/:id',AdminController.studentUpdate)
 route.post('/admin/insertStudent',AdminController.studentInsert)
 
 
+// verifylogin 
+route.post('/verifyLogin',FrontController.verifyLogin)
+route.get('/logout',FrontController.logout)
 
-
-
-
+ 
   module.exports= route
