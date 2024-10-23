@@ -1,7 +1,11 @@
 const UserModel = require("../models/user");
 const bcrypt = require("bcrypt");
-
 const cloudinary = require("cloudinary");
+const jwt = require('jsonwebtoken')
+
+
+
+
 cloudinary.config({
   cloud_name: "diezdjotw",
   api_key: "241161176572584",
@@ -108,6 +112,23 @@ class FrontController {
       if (user != null) { 
         const isMatched = await bcrypt.compare(password,user.password)
         console.log(isMatched)
+
+        if (isMatched){
+
+          //tokan create 
+          let token = jwt.sign ({ ID:user._id},   'nirpalrawat' );
+          console.log(token)
+          //res.cookie('token',token);
+          //res.redirect('/home');
+
+          res.redirect('/home')
+
+
+        } else {
+          req.flash("error", "Email or password is not valid ");
+        return res.redirect("/");
+        }
+
       } else {
         req.flash("error", "You are not a registered user ");
         return res.redirect("/");

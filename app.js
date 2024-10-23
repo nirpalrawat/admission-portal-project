@@ -45,3 +45,16 @@ app.use('/',web)
 
 //server run
 app.listen(port,console.log("server start localhost:3000"))
+
+
+// terminal par load kar na hi
+
+// npm i init
+// npm i express
+// npm i ejs
+// npm i mongoose
+// npm i bcrypt
+// npm i connect-flash
+// npm i exoress-session
+// npm i express-fileupload
+// npm i cloudinary  
