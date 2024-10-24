@@ -106,7 +106,7 @@ class FrontController {
 
   static verifyLogin = async (req, res) => {
     try {
-      //console.log(req.body);
+      // console.log(req.body);
       const { email, password } = req.body;
       const user = await UserModel.findOne({ email: email });
       if (user != null) { 
